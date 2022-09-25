@@ -3,6 +3,8 @@
 window.onload = function () {
     //переключение слайдов
     let container = document.querySelector('.slider__container');
+    let firstSlide = document.getElementById('first__slide');
+    let secondSlide = document.getElementById('second__slide');
 
     document.getElementById('next').onclick = function () {
         clickNextSlide();

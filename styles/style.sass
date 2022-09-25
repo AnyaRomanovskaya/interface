@@ -175,7 +175,6 @@ body
       background: linear-gradient(131.29deg, rgba(165, 185, 255, 0.24) 1.1%, rgba(119, 124, 138, 0) 108.32%), radial-gradient(32.42% 32.42% at 46.83% 18.92%, rgba(255, 255, 255, 0.147) 0%, rgba(62, 75, 119, 0) 100%), linear-gradient(0deg, rgba(141, 104, 177, 0.4), rgba(141, 104, 177, 0.4))
       box-shadow: 29px 54px 56px rgba(36, 52, 102, 0.25), inset 2.29395px 2.29395px 2.29395px rgba(84, 101, 157, 0.1)
 
-
     .ball--six
       width: 316.24px
       height: 316.24px
@@ -184,5 +183,24 @@ body
       background: linear-gradient(131.29deg, rgba(165, 185, 255, 0.24) 1.1%, rgba(119, 124, 138, 0) 108.32%), radial-gradient(32.42% 32.42% at 46.83% 18.92%, rgba(255, 255, 255, 0.147) 0%, rgba(62, 75, 119, 0) 100%), linear-gradient(0deg, rgba(141, 104, 177, 0.4), rgba(141, 104, 177, 0.4))
       box-shadow: 29px 54px 56px rgba(36, 52, 102, 0.25), inset 2.29395px 2.29395px 2.29395px rgba(84, 101, 157, 0.1)
 
+  .animate__firstSlide
+    animation: move 2s linear
+    @keyframes move
+      0%
+        left: 0
+      100%
+        left: -300px
+
   #second__slide
     display: none
+    animation: move2 5s linear
+    @keyframes move2
+      0%
+        right: -300px
+      50%
+        right: 0
+      100%
+        right: 0
+
+    .info__description
+      max-width: 610px

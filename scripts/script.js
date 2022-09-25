@@ -7,11 +7,15 @@ window.onload = function () {
     let secondSlide = document.getElementById('second__slide');
 
     document.getElementById('next').onclick = function () {
-        clickNextSlide();
+        firstSlide.classList.toggle('animate__firstSlide');
+        setTimeout(() => {
+            clickNextSlide();
+        }, 1600)
     }
 
     document.getElementById('prev2').onclick = function () {
         clickPrevSlide();
+        firstSlide.classList.remove('animate__firstSlide');
     }
 
     function clickNextSlide() {
@@ -46,4 +50,34 @@ window.onload = function () {
             cursor.classList.remove("expand");
         });
     })
+
+    //анимация кругов
+    const wrapper = document.querySelector('.slider__track');
+    const layers = document.querySelectorAll('.ball');
+
+    const handleParallax = (evt) => {
+        // размер области просмотра
+        const parallaxLeftOffset = wrapper.getBoundingClientRect().left;
+        const parallaxTopOffset = wrapper.getBoundingClientRect().top;
+
+        // координаты центра экрана
+        const coordX = evt.clientX - parallaxLeftOffset - 0.5 * wrapper.offsetWidth;
+        const coordY = evt.clientY - parallaxTopOffset - 0.5 * wrapper.offsetHeight;
+
+        layers.forEach((layer) => {
+            const layerSpeed = layer.dataset.speed;
+            const x = -(coordX * layerSpeed).toFixed(2);
+            const y = -(coordY * layerSpeed).toFixed(2);
+            layer.setAttribute('style', `transform: translate(${x}px, ${y}px);`)
+        });
+    };
+
+    const reset = () => {
+        layers.forEach((layer) => {
+            layer.removeAttribute('style');
+        });
+    }
+
+    wrapper.addEventListener('mousemove', handleParallax);
+    wrapper.addEventListener('mouseout', reset);
 }
